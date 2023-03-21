@@ -1,0 +1,84 @@
+.summary {
+  flex-grow: 1;
+  color: var(--neutral-dark-blue);
+  padding: .75rem 1.5rem;
+  width: 100%;
+}
+
+/* .summary__header {} */
+
+.summary__title {
+  font-size: 1.2rem;
+}
+
+/* .summary__content {} */
+
+.summary__section {
+  display: flex;
+
+  border-radius: 10px;
+
+  margin: var(--gap) 0;
+  padding: .75rem .75rem;
+}
+
+.summary__section[data-category="Reaction"] {
+  background-color: rgba(var(--primary-red), .1);
+  color: rgba(var(--primary-red), 1);
+}
+
+.summary__section[data-category="Memory"] {
+  background-color: rgba(var(--primary-yellow), .1);
+  color: rgba(var(--primary-yellow), 1);
+}
+
+.summary__section[data-category="Verbal"] {
+  background-color: rgba(var(--primary-teal), .1);
+  color: rgba(var(--primary-teal), 1);
+}
+
+.summary__section[data-category="Visual"] {
+  background-color: rgba(var(--primary-blue), .1);
+  color: rgba(var(--primary-blue), 1);
+}
+
+.summary__icon {
+  background: var(--summary-icon) no-repeat center;
+  display: inline-block;
+
+  margin-right: .5rem;
+  height: 24px;
+  width: 24px;
+}
+
+.summary__text {
+  flex-grow: 1;
+  font-weight: bold;
+}
+
+.summary__score {
+  color: var(--neutral-dark-blue);
+  font-weight: bold;
+}
+
+.summary__score::after {
+  content: ' / 100';
+  opacity: .5;
+}
+
+/* .summary__footer {} */
+
+.summary__button {
+  background-color: var(--neutral-dark-blue);
+  color: var(--neutral-white);
+
+  border: none;
+  border-radius: 40px;
+  font-weight: bold;
+  font-size: 1rem;
+  text-align: center;
+  cursor: pointer;
+
+  padding: 1rem 0;
+  width: 100%;
+}
