@@ -1,12 +1,30 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Card from '../components/Card.astro';
+
+const products = [
+  {
+    category: 'Perfume',
+    title: 'Gabrielle Essence Eau De Parfum',
+    description: 'A floral, solar and voluptuous interpretation compose by Olivier Polge, Perfumer-Creator for the House of CHANEL.',
+    priceBefore: 149.99,
+    priceAfter: 169.99,
+  },
+];
 ---
 
-<Layout title="product-preview-card">
-	<main>
-	</main>
+<Layout title='product-preview-card'>
+  <main>
+    {
+      products.map(product => <Card data={product} />)
+    }
+  </main>
 </Layout>
 
 <style>
-
+  main {
+    display: grid;
+    place-content: center;
+    height: 100%;
+  }
 </style>
