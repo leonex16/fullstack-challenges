@@ -1,63 +1,222 @@
 ---
 export interface Props {
-	title: string;
-	body: string;
-	href: string;
+  data: {
+    category: string;
+    title: string;
+    description: string;
+    priceBefore: number;
+    priceAfter: number;
+  };
 }
 
-const { href, title, body } = Astro.props;
+const { category, description, priceAfter, priceBefore, title } = Astro.props.data;
 ---
 
-<li class="link-card">
-	<a href={href}>
-		<h2>
-			{title}
-			<span>&rarr;</span>
-		</h2>
-		<p>
-			{body}
-		</p>
-	</a>
-</li>
-<style>
-	.link-card {
-		list-style: none;
-		display: flex;
-		padding: 0.25rem;
-		background-color: white;
-		background-image: none;
-		background-size: 400%;
-		border-radius: 0.6rem;
-		background-position: 100%;
-		transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-		box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
-	}
+<article class='card fade-in-fwd'>
+  <header class='card__img-contianer'>
+    <picture>
+      <source media='(min-width: 768px)' srcset='/images/image-product-desktop.jpg' />
+      <img src='/images/image-product-mobile.jpg' alt='Producto' class='card__img' />
+    </picture>
+  </header>
 
-	.link-card > a {
-		width: 100%;
-		text-decoration: none;
-		line-height: 1.4;
-		padding: 1rem 1.3rem;
-		border-radius: 0.35rem;
-		color: #111;
-		background-color: white;
-		opacity: 0.8;
-	}
-	h2 {
-		margin: 0;
-		font-size: 1.25rem;
-		transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-	}
-	p {
-		margin-top: 0.5rem;
-		margin-bottom: 0;
-		color: #444;
-	}
-	.link-card:is(:hover, :focus-within) {
-		background-position: 0;
-		background-image: var(--accent-gradient);
-	}
-	.link-card:is(:hover, :focus-within) h2 {
-		color: rgb(var(--accent));
-	}
+  <section class='card__body'>
+    <header class='card__header'>
+      <code class='card__category'>{category}</code>
+      <h3 class='card__product'>{title}</h3>
+    </header>
+
+    <div class='card__desc-container'>
+      <p class='card__desc'>
+        {description}
+      </p>
+    </div>
+
+    <div class='card__price-container'>
+      <span class='card__price-after'>{priceAfter}</span>
+      <sup class='card__price-before'><strike>{priceBefore}</strike></sup>
+    </div>
+  </section>
+
+  <footer class='card__footer'>
+    <button class='card__cart-button'>Add to Cart</button>
+  </footer>
+</article>
+
+<style>
+  @keyframes fade-in-fwd {
+    0% {
+      transform: translateZ(-80px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateZ(0);
+      opacity: 1;
+    }
+  }
+
+  .fade-in-fwd {
+    animation: fade-in-fwd 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  }
+
+  .card {
+    --outer-border-radius: 8px;
+    --inner-border-radius: calc(8px / 2);
+    --max-width-card: 300px;
+    --aspect-ratio-card: aspect-ratio(9/16);
+    --width-card-image: 100%;
+    --height-card-image: 100%;
+    --padding-content-x: 1rem;
+    --padding-content-y: 0.5rem;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+
+    background-color: var(--neutral-white);
+    border-radius: var(--outer-border-radius);
+    aspect-ratio: var(--aspect-ratio-card);
+    max-width: var(--max-width-card);
+
+    box-shadow: 0px 0px 50px -10px rgba(0,0,0,0.1);
+  }
+
+  /* .card__img-contianer {} */
+
+  .card__img {
+    border-radius: var(--outer-border-radius) var(--outer-border-radius) 0 0;
+    width: var(--width-card-image);
+    object-fit: cover;
+    height: 100%;
+  }
+
+  .card__body {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: var(--padding-content-y) var(--padding-content-x);
+  }
+
+  /* .card__header { } */
+
+  .card__category,
+  .card__desc {
+    color: var(--neutral-grayish-blue);
+    font-size: 0.75rem;
+    opacity: 0.75;
+  }
+
+  .card__category {
+    text-transform: uppercase;
+    letter-spacing: 0.4rem;
+  }
+
+  .card__product {
+    font-family: 'Fraunces';
+    font-weight: bold;
+    font-size: 1.6rem;
+  }
+
+  .card__desc-container {
+    flex-grow: 1;
+  }
+
+  .card__desc {
+    font-size: 14px;
+    line-height: 1.2rem;
+  }
+
+  /* .card__price-container {} */
+
+  .card__price-after {
+    color: var(--primary-cyan);
+    font-family: 'Fraunces';
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+
+  .card__price-after::before,
+  .card__price-before::before {
+    content: '$';
+  }
+
+  .card__price-before {
+    position: relative;
+    top: -4px;
+    left: 4px;
+    color: var(--neutral-grayish-blue);
+    font-size: 0.75rem;
+  }
+
+  .card__price-before::before {
+    text-decoration: line-through;
+  }
+
+  .card__footer {
+    padding: var(--padding-content-y) var(--padding-content-x);
+  }
+
+  .card__cart-button {
+    background-color: var(--primary-cyan);
+    color: var(--neutral-white);
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    padding: 12px;
+    width: 100%;
+
+    transition: background-color 100ms ease-in-out;
+  }
+
+  .card__cart-button:hover {
+    background-color: hsl(158, 36%, 27%);
+  }
+
+  .card__cart-button::before {
+    content: url(/images/icon-cart.svg);
+    display: inline-block;
+    margin-right: 6px;
+  }
+
+  @media screen and (min-width: 768px) {
+    .card {
+      --outer-border-radius: 8px;
+      --inner-border-radius: calc(8px / 2);
+      --max-width-card: 550px;
+    --aspect-ratio-card: aspect-ratio(16/9);
+    --width-card-image: 250px;
+      --padding-content-x: 1.5rem;
+      --padding-content-y: 0.75rem;
+    }
+
+    .card {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-row: repeat(3, 1fr);
+      grid-template-areas:
+        'img-container body-container body-container'
+        'img-container body-container body-container'
+        'img-container footer-container footer-container';
+    }
+
+    .card__img-contianer {
+      grid-area: img-container;
+    }
+
+    .card__img {
+      border-radius: var(--outer-border-radius) 0 0 var(--outer-border-radius);
+    }
+
+    .card__body {
+      grid-area: body-container;
+    }
+
+    .card__footer {
+      grid-area: footer-container;
+    }
+  }
 </style>
