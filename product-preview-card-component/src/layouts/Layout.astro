@@ -27,8 +27,6 @@ const { title } = Astro.props;
   --neutral-dark-blue: hsl(212, 21%, 14%);
   --neutral-grayish-blue: hsl(228, 12%, 48%);
   --neutral-white: hsl(0, 0%, 100%);
-
-  --gap: 1rem;
 }
 
 @font-face {
@@ -47,8 +45,8 @@ const { title } = Astro.props;
 
 @font-face {
   font-family: 'Fraunces';
-  src: url('/fonts/Fraunces/Fraunces_72pt_SuperSoft-Regular.ttf') format('truetype');
-  font-weight: normal;
+  src: url('/fonts/Fraunces/Fraunces_72pt_SuperSoft-Bold.ttf') format('truetype');
+  font-weight: bold;
   font-style: normal;
 }
 
@@ -60,7 +58,9 @@ const { title } = Astro.props;
   box-sizing: border-box;
 }
 
-body {
+html, body {
+  background-color: var(--primary-cream);
+  color: var(--neutral-dark-blue);
   font-family: 'Montserrat', sans-serif;
   font-size: 18px;
   height: 100vh;
