@@ -25,7 +25,10 @@ Users should be able to:
 
 ### Preview
 
-<video src="./design/desktop-preview.mov" muted autoplay loop></video>
+
+Uploading desktop-preview.mov…
+
+<video src="https://user-images.githubusercontent.com/55729995/227249089-890b447a-244d-4e6a-be28-0edcf69a4e29.mov" muted autoplay loop></video>
 *Desktop Preview*
 
 ## My process
