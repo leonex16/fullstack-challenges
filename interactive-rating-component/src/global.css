@@ -1,0 +1,40 @@
+:root {
+  --primary-orange: hsl(25, 97%, 53%);
+  
+  --neutral-white: hsl(0, 0%, 100%);
+  --neutral-light-grey: hsl(217, 12%, 63%);
+  --neutral-medium-grey: hsl(216, 12%, 54%);
+  --neutral-blue: hsl(213, 19%, 18%);
+  --neutral-dark-blue: hsl(216, 12%, 8%);
+}
+
+@font-face {
+  font-family: 'Overpass';
+  src: url('/fonts/Overpass/Overpass-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Overpass';
+  src: url('/fonts/Overpass/Overpass-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+*,
+*::before,
+*::after {
+  font-family: 'Overpass', sans-serif;
+  font-size: 18px;
+  color: var(--neutral-white);
+
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  background-color: var(--neutral-dark-blue);
+  height: 100vh;
+}
