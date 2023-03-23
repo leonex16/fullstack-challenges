@@ -1,0 +1,30 @@
+<x-dialog>
+  <article class="dialog" slot="content">
+    <header class="dialog__icon-container">
+      <img src="/images/icon-star.svg" alt="start" class="dialog__icon">
+    </header>
+
+    <section class="dialog__overview">
+      <header class="dialog__title-container">
+        <h2 id="title" class="dialog__title">[UNSET]</h2>
+      </header>
+
+      <div class="dialog__content-container">
+        <p id="content" class="dialog__content">[UNSET]</p>
+      </div>
+
+      <div class="dialog__rating-container">
+        <span class="dialog__rating">1</span>
+        <span class="dialog__rating">2</span>
+        <span class="dialog__rating">3</span>
+        <span class="dialog__rating">4</span>
+        <span class="dialog__rating">5</span>
+      </div>
+
+      <form action="_thank-you.html" class="dialog__form">
+        <input id="rating" type="hidden" name="rating" value="-1">
+        <button type="submit" class="dialog__submit">Submit</button>
+      </form>
+    </section>
+  </article>
+</x-dialog>

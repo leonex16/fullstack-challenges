@@ -1,0 +1,128 @@
+.dialog {
+  --circle-size: 42px;
+  --circle-radius: 50px;
+  --circle-color: var(--neutral-blue);
+  --transitions: background-color 150ms ease-in-out, color 150ms ease-in-out, opacity 150ms ease-in-out;
+}
+
+.dialog * {
+  user-select: none;
+}
+
+.dialog__icon-container {
+  position: relative;
+  display: inline-block;
+  margin-bottom: .5rem;
+  border-radius: var(--circle-radius);
+  background-color: var(--circle-color);
+  width: var(--circle-size);
+  height: var(--circle-size);
+}
+
+.dialog__icon {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 20px;
+  width: 20px;
+}
+
+.dialog__overview {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  height: 100%;
+}
+
+/* .dialog__title-container {} */
+
+.dialog__title {
+  font-size: 1.4rem;
+}
+
+.dialog__content-container {
+  flex-grow: 0;
+}
+
+.dialog__content {
+  color: var(--neutral-light-grey);
+  font-size: 16px;
+  line-height: 1.5rem;
+}
+
+.dialog__rating-container {
+  flex-grow: 1;
+
+  display: flex;
+  justify-content: space-between;
+  max-height: var(--circle-size);
+}
+
+.dialog__rating {
+  display: inline-block;
+
+  cursor: pointer;
+  font-size: .8rem;
+  text-align: center;
+  line-height: 2.6rem;
+
+  border-radius: var(--circle-radius);
+  background-color: var(--circle-color);
+  color: var(--neutral-light-grey);
+
+  width: var(--circle-size);
+  height: var(--circle-size);
+
+  transition: var(--transitions);
+}
+
+.dialog__rating:hover {
+  background-color: var(--neutral-light-grey);
+  color: var(--neutral-white);
+}
+
+.dialog__rating--active,
+.dialog__rating:active {
+  background-color: var(--primary-orange);
+  color: var(--neutral-white);
+}
+
+.dialog__rating--active:hover {
+  background-color: var(--primary-orange) !important;
+  color: var(--neutral-white) !important;
+  opacity: .75;
+}
+
+.dialog__form {
+  flex-grow: 1;
+
+  display: flex;
+  align-items: center;
+}
+
+.dialog__submit {
+  border: none;
+  border-radius: 50px;
+  background-color: var(--primary-orange);
+  color: var(--neutral-white);
+
+  text-align: center;
+  letter-spacing: .2rem;
+  text-transform: uppercase;
+
+  padding: .6rem 0;
+  width: 100%;
+
+  cursor: pointer;
+  transition: var(--transitions);
+}
+
+.dialog__submit:hover {
+  opacity: .75;
+}
+
+.dialog__submit:active {
+  background-color: var(--neutral-white);
+  color: var(--primary-orange);
+}
